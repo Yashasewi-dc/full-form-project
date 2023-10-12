@@ -56,8 +56,10 @@ export class MyInput extends LitElement {
         return html`
             ${this.types[this.type as keyof typeof this.types] === "text"
                 ? html`
-                      <md-filled-text-field label=${this.name} type="text">
-                      </md-filled-text-field>
+                      <md-filled-text-field
+                          label=${this.name}
+                          type="text"
+                      ></md-filled-text-field>
                   `
                 : ""}
             ${this.types[this.type as keyof typeof this.types] === "radio"
