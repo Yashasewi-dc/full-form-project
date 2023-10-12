@@ -1,0 +1,22 @@
+{
+    "name": "material_form",
+    "private": false,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc && vite build",
+        "preview": "vite preview"
+    },
+    "dependencies": {
+        "@lit/react": "^1.0.0",
+        "@material/web": "^1.0.0",
+        "lit": "^3.0.0",
+        "react": "^18.2.0"
+    },
+    "devDependencies": {
+        "@types/react": "^18.2.28",
+        "typescript": "^5.0.2",
+        "vite": "^4.4.5"
+    }
+}
