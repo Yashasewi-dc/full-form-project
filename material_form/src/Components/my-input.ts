@@ -69,7 +69,7 @@ export class MyInput extends LitElement {
                       )}
                   `
                 : ""}
-            <button>Click me</button>
+            <!-- <button>Click me</button> -->
         `;
     }
 }
