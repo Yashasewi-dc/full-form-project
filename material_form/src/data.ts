@@ -18,7 +18,7 @@ export const data = {
                 },
                 {
                     id: 1,
-                    value: "option1",
+                    value: "option2",
                 },
             ],
         },
@@ -34,12 +34,9 @@ export const data = {
                 },
                 {
                     id: 4,
-                    value: "option1",
+                    value: "option2",
                 },
             ],
         },
     ],
 };
-
-
-

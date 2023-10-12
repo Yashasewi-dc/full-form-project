@@ -8,6 +8,9 @@ interface ParameterOptions {
     id: number;
     value: string;
 }
+export interface StoryKnobs {
+    disabled: boolean;
+}
 
 @customElement("my-input")
 export class MyInput extends LitElement {
@@ -30,10 +33,22 @@ export class MyInput extends LitElement {
     parameter_options: ParameterOptions[] = [];
 
     static styles = css`
-        .input-container {
+        .column {
             display: flex;
-            flex-direction: column;
-            margin-bottom: 1rem;
+            /* flex-direction: column; */
+            gap: 1rem;
+        }
+
+        .radio-label {
+            display: flex;
+            align-items: center;
+        }
+
+        label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
         }
     `;
 
@@ -47,26 +62,47 @@ export class MyInput extends LitElement {
                 : ""}
             ${this.types[this.type as keyof typeof this.types] === "radio"
                 ? html`
-                      ${this.parameter_options.map(
-                          (option) => html`
-                              <md-radio name=${this.name} value=${option.value}
-                                  >${option.value}</md-radio
-                              >
-                          `
-                      )}
+                      <div
+                          role="radiogroup"
+                          aria-label="Animals"
+                          class="column"
+                      >
+                          ${this.parameter_options.map(
+                              (option) => html`
+                                  <div class="radio-label">
+                                      <md-radio
+                                          aria-label="Birds"
+                                          id="birds-radio"
+                                          name="with-labels"
+                                          touch-target="wrapper"
+                                          checked
+                                      >
+                                      </md-radio>
+                                      <label for="birds-radio"
+                                          >${option.value}</label
+                                      >
+                                  </div>
+                              `
+                          )}
+                      </div>
                   `
                 : ""}
             ${this.types[this.type as keyof typeof this.types] === "checkbox"
                 ? html`
-                      ${this.parameter_options.map(
-                          (option) => html`
-                              <md-checkbox
-                                  id=${option.value}
-                                  touch-target="wrapper"
-                              ></md-checkbox>
-                              <label for=${option.value}>${option.value}</label>
-                          `
-                      )}
+                      <div class="column" role="group" aria-label="Animals">
+                          ${this.parameter_options.map(
+                              (option) => html`
+                                  <label>
+                                      <md-checkbox
+                                          checked
+                                          aria-label=${option.value}
+                                          touch-target="wrapper"
+                                      ></md-checkbox>
+                                      ${option.value}
+                                  </label>
+                              `
+                          )}
+                      </div>
                   `
                 : ""}
             <!-- <button>Click me</button> -->
