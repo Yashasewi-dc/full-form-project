@@ -46,6 +46,8 @@ export class MyElement extends LitElement {
                             name=${parameter.name}
                             placeholder=${parameter.placeholder}
                             type=${parameter.input_type}
+                            value=${parameter.default_value}
+                            .parameter_options=${parameter.parameter_options || []}
                         ></my-input>
                     `
                 )}
